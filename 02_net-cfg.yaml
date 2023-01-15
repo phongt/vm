@@ -1,0 +1,21 @@
+# Configure network with static IP 192.168.10.4
+
+network:
+    version: 2
+    renderer: networkd
+    ethernets:
+        ens3:
+            dhcp4: yes
+        ens4:
+            dhcp4: no
+            addresses: [192.168.10.4/24]
+            gateway4: 192.168.10.1
+    vlans:
+        vlan15:
+            id: 15
+            link: ens4
+            addresses: [ "10.15.1.10/16" ]
+        vlan10:
+            id: 10
+            link: ens4
+            addresses: [ "10.10.1.10/16" ]
